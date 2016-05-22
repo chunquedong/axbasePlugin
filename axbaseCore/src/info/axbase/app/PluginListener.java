@@ -7,10 +7,13 @@ package info.axbase.app;
 
 import android.app.Activity;
 import android.app.ActivityManager;
+import android.app.AlarmManager;
 import android.app.AlertDialog;
+import android.app.PendingIntent;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.view.WindowManager;
@@ -111,17 +114,17 @@ public class PluginListener {
 	public void restartApp() {
 		PluginClient.log.i("will restart");
 
-		// Intent i = context.getPackageManager().getLaunchIntentForPackage(
-		// context.getPackageName());
-		// i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-		//
-		// int pendingId = 1;
-		// PendingIntent pendingIntent = PendingIntent.getActivity(context,
-		// pendingId, i, PendingIntent.FLAG_CANCEL_CURRENT);
-		// AlarmManager mgr = (AlarmManager) context
-		// .getSystemService(Context.ALARM_SERVICE);
-		// mgr.set(AlarmManager.RTC, System.currentTimeMillis() + 2000,
-		// pendingIntent);
+		 Intent i = context.getPackageManager().getLaunchIntentForPackage(
+		 context.getPackageName());
+		 i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		
+		 int pendingId = 1;
+		 PendingIntent pendingIntent = PendingIntent.getActivity(context,
+		 pendingId, i, PendingIntent.FLAG_CANCEL_CURRENT);
+		 AlarmManager mgr = (AlarmManager) context
+		 .getSystemService(Context.ALARM_SERVICE);
+		 mgr.set(AlarmManager.RTC, System.currentTimeMillis() + 1000,
+		 pendingIntent);
 
 		ActivityManager am = (ActivityManager) context
 				.getSystemService(Context.ACTIVITY_SERVICE);
