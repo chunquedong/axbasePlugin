@@ -21,3 +21,4 @@ axbasePlugin是轻量级Android插件化开发框架。能实现在不重新安�
 - [项目主页](http://www.axbase.info)
 - [使用说明](http://www.axbase.info/Doc/start)
 - [原理介绍](http://my.oschina.net/chunquedong/blog/676946)
+- [常见问题](https://github.com/chunquedong/axbasePlugin/wiki)
