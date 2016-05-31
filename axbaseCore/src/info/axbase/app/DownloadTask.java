@@ -38,7 +38,17 @@ class DownloadTask {
 	}
 
 	String getImei() {
-		return service.imei;
+		String imei = null;
+		try {
+			imei = service.telephonyManager.getDeviceId();
+			return imei;
+		} catch (Exception ex) {
+		}
+		
+		if (imei != null) {
+			return imei;
+		}
+		return "unknow";
 	}
 
 	String getPackageName() {

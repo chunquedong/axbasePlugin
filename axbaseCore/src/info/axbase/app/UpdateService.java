@@ -45,8 +45,8 @@ public class UpdateService extends Service {
 	public static final int installType_install = 1;
 	public static final int installType_launch = 2;
 	
-	String imei;
 	String packageName;
+	TelephonyManager telephonyManager;
 	
 	static class OfflineVersion {
 		File file;
@@ -85,9 +85,8 @@ public class UpdateService extends Service {
 		
 		downloadTask = new DownloadTask(this, installType_update);
 		timer.schedule(new UpdateTask(), 0, period);
-		imei = ((TelephonyManager) getSystemService(TELEPHONY_SERVICE))
-				.getDeviceId();
 		packageName = this.getPackageName();
+		telephonyManager = ((TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE));
 	}
 
 	@Override
