@@ -1,6 +1,8 @@
 *.class
-axbaseHost/bin
+axbaseHostApp/bin
 axbaseProtocol/bin
 R.java
-axbasePlugin/bin
+axbasePluginApp/bin
 axbaseCore/bin
+*.class
+.DS_Store
