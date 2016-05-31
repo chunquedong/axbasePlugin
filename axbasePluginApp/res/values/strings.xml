@@ -2,7 +2,7 @@
 <resources>
 
     <string name="app_name">axbasePlugin</string>
-    <string name="hello_world">Hello world 2!</string>
+    <string name="hello_world">version 2!</string>
     <string name="title_activity_internal">InternalActivity</string>
     <string name="title_activity_registed">RegistedActivity</string>
 
