@@ -157,7 +157,7 @@ public class PluginInfo {
 			nativeLibraryDir = storagePath + "/" + ("lib");
 		}
 
-		classLoader = new PluginClassLoader(dexfile, optimizedDirectory,
+		classLoader = PluginClassLoader.make(dexfile, optimizedDirectory,
 				nativeLibraryDir, context.getClassLoader());
 		classLoader.plugin = this;
 		loadAsset(context, dexfile);
@@ -182,6 +182,12 @@ public class PluginInfo {
 		}
 	}
 
+	/**
+	 * 这段代码来自https://github.com/DroidPluginTeam/DroidPlugin
+	 * @param context
+	 * @param apkfile
+	 * @param nativeLibraryDir
+	 */
 	private static void copyNativeLibs(Context context, String apkfile,
 			String nativeLibraryDir) {
 		ZipFile zipFile = null;

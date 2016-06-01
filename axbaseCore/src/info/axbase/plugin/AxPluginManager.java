@@ -40,7 +40,7 @@ public class AxPluginManager {
 		return instance;
 	}
 
-	private AppClassLoader appClassLoader;
+	private AxAppClassLoader appClassLoader;
 
 	Map<String, PluginInfo> getPluginInfoMap() {
 		return pluginInfoMap;
@@ -100,7 +100,7 @@ public class AxPluginManager {
 			if (appClassLoader == null) {
 				ClassLoader old = (ClassLoader) Reflection.getField(loadedApk,
 						"mClassLoader");
-				appClassLoader = new AppClassLoader(old, this);
+				appClassLoader = new AxAppClassLoader(old, this);
 			}
 			Reflection.setField(loadedApk, "mClassLoader", appClassLoader);
 		}

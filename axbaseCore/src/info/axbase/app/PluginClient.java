@@ -5,6 +5,7 @@
  */
 package info.axbase.app;
 
+import info.axbase.plugin.PluginClassLoader;
 import info.axbase.util.SLogger;
 
 import java.io.File;
@@ -40,6 +41,8 @@ public abstract class PluginClient {
 			DownloadTask.setHost(config.hostUrl);
 		}
 		UpdateService.setCheckTime(config.checkUpdateTime);
+		
+		PluginClassLoader.setClassLoaderType(c.classLoaderType);
 	}
 	
 	private static PluginClient instance;
