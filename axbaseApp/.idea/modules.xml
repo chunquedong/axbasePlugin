@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/axbaseApp.iml" filepath="$PROJECT_DIR$/axbaseApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/axbaseCore/axbaseCore.iml" filepath="$PROJECT_DIR$/axbaseCore/axbaseCore.iml" />
+      <module fileurl="file://$PROJECT_DIR$/axbaseHost/axbaseHost.iml" filepath="$PROJECT_DIR$/axbaseHost/axbaseHost.iml" />
+      <module fileurl="file://$PROJECT_DIR$/axbaseHostApp.iml" filepath="$PROJECT_DIR$/axbaseHostApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/axbasePlugin/axbasePlugin.iml" filepath="$PROJECT_DIR$/axbasePlugin/axbasePlugin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/axbaseProtocol/axbaseProtocol.iml" filepath="$PROJECT_DIR$/axbaseProtocol/axbaseProtocol.iml" />
+    </modules>
+  </component>
+</project>

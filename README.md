@@ -14,11 +14,10 @@ AxbasePlugin是轻量级开源Android插件化开发框架。可实现在不重�
 
 # Source Code
 - 源码中axbaseCore为插件框架的核心代码。
-- axbaseHostApp和axbasePlugin分别为宿主Demo和插件Demo。
-- 其中axbaseHostApp为AndroidStudio项目，其他为EclipseADT项目。
+- axbaseHost为宿主Demo，axbasePlugin为插件Demo。
+- axbaseProtocl是宿主和插件通信的示例，可选。
 
-
-# 用法
+# Usage
 在宿主AndroidMainifest.xml注册插件使用的组件:
 ```
 <service android:name="info.axbase.app.UpdateService"/>
@@ -31,11 +30,11 @@ PluginClient.init(this);
 启动插件：
 ```
 PluginClient.getInstance()
-.launch("071d9574-8332-e400-e438-a272329af08b(你新建项目获得的AppID)", MainActivity.this, true);
+.launch("0729c758-3216-3c80-3113-0242ac110150(你新建项目获得的AppID)", MainActivity.this, true);
 ```
-插件包0729c758-3216-3c80-3113-0242ac110150@0.apk放入assets目录中。
+插件包0729c758-3216-3c80-3113-0242ac110150@0.apk(后面的@0指版本号)放入assets目录中。后续上传版本的版本会自动更新。
 
-# Links
+# More
 - [项目主页](http://www.axbase.info)
 - [使用说明](http://www.axbase.info/Doc/start)
 - [原理介绍](http://my.oschina.net/chunquedong/blog/676946)

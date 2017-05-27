@@ -1,8 +1,22 @@
 *.class
-axbaseHostApp/bin
-axbaseProtocol/bin
 R.java
-axbasePluginApp/bin
-axbaseCore/bin
-*.class
 .DS_Store
+# Windows clutter
+Thumbs.db
+*.iml
+.gradle
+local.properties
+.idea/workspace.xml
+.idea/libraries
+.DS_Store
+build
+captures
+bin
+
+/*/out
+/*/*/build
+/*/*/production
+*.iws
+*.ipr
+*~
+*.swp
