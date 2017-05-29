@@ -115,6 +115,7 @@ public abstract class PluginClient {
 	 * load and run main Activity
 	 * @param id
 	 * @param context
+	 * @param finishLaunchActivity if true will close from Activity
 	 */
 	public void launch(String id, Context ctx, boolean finishLaunchActivity) {
 		log.d("launch: " + id);

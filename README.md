@@ -30,7 +30,7 @@ PluginClient.init(this);
 启动插件：
 ```
 PluginClient.getInstance()
-.launch("0729c758-3216-3c80-3113-0242ac110150(你新建项目获得的AppID)", MainActivity.this, true);
+.launch("0729c758-3216-3c80-3113-0242ac110150(你新建项目获得的AppID)", MainActivity.this, false);
 ```
 插件包0729c758-3216-3c80-3113-0242ac110150@0.apk(后面的@0指版本号)放入assets目录中。后续上传版本的版本会自动更新。
 

@@ -10,11 +10,14 @@ import info.axbase.appprot.ComponentRegister;
 import info.axbase.appprot.Protocol;
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class MainActivity extends Activity {
 
 	TextView textView;
+	Button button;
 
 	Protocol hostInterface = new Protocol() {
 		@Override
@@ -29,10 +32,17 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 
 		textView = (TextView) this.findViewById(R.id.textView1);
+		button = (Button) this.findViewById(R.id.button);
 
-		PluginClient.getInstance()
-				.launch("0729c758-3216-3c80-3113-0242ac110150",
-						MainActivity.this, true);
+		button.setOnClickListener(new View.OnClickListener(){
+			@Override
+			public void onClick(View view) {
+				PluginClient.getInstance()
+						.launch("0729c758-3216-3c80-3113-0242ac110150",
+								MainActivity.this, false);
+			}
+		});
+
 
 		ComponentRegister.getInstance().setComponent("host", hostInterface);
 
