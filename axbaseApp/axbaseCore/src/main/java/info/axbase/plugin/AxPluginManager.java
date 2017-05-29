@@ -211,7 +211,7 @@ public class AxPluginManager {
 		
 		for (File file : files) {
 			if (file.isDirectory()) {
-				File apkFile = new File(file, "p.apk");
+				File apkFile = new File(file, "p.jar");
 				if (apkFile.exists()) {
 					load(apkFile.getAbsolutePath(), file.getName());
 				}

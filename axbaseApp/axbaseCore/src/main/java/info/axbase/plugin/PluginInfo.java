@@ -137,7 +137,7 @@ public class PluginInfo {
 		storagePath = getPluginDir(storagePathBase, this.packageName);
 		String optimizedDirectory;
 		String nativeLibraryDir;
-		String dexfile = storagePath + "/p.apk";
+		String dexfile = storagePath + "/p.jar";
 
 		File file = new File(storagePath);
 		if (!file.exists()) {

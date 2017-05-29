@@ -97,10 +97,16 @@ public class UpdateService extends Service {
 	}
 	
 	static String[] parceApkFileName(String name) {
-		if (!name.endsWith(".apk")) {
+		if (name.endsWith(".jar")) {
+			name = name.replace(".jar", "");
+		}
+		else if (name.endsWith(".apk")) {
+			name = name.replace(".apk", "");
+		}
+		else {
 			return null;
 		}
-		name = name.replace(".apk", "");
+
 		String[] bn = name.split("@");
 		if (bn.length != 2) {
 			return null;
@@ -188,7 +194,8 @@ public class UpdateService extends Service {
 					if (bn == null) {
 						continue;
 					}
-					String dst = dstDir + "/" + f;
+					String name = f.replace(".apk", ".jar");
+					String dst = dstDir + "/" + name;
 					FileUtil.copyAsset(this, f, dst);
 					
 					PluginClient.log.d("copy assets " + f);
@@ -285,7 +292,7 @@ public class UpdateService extends Service {
 	}
 
 	public static String getFileName(VersionInfo versionInfo) {
-		return versionInfo.appProject +"@"+ versionInfo.version+".apk";
+		return versionInfo.appProject +"@"+ versionInfo.version+".jar";
 	}
 	
 	void onComplete(String appId, VersionInfo versionInfo
