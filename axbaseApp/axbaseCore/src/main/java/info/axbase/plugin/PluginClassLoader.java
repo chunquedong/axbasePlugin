@@ -50,12 +50,12 @@ public class PluginClassLoader extends DexClassLoader {
 			return super.loadClass(className, resolve);
 		} else {
 			try {
-				if (className.startsWith("android.support.")) {
-					try {
-						return appClassLoader.loadClass(className);
-					} catch (ClassNotFoundException e0) {
-					}
-				}
+//				if (className.startsWith("android.support.")) {
+//					try {
+//						return appClassLoader.loadClass(className);
+//					} catch (ClassNotFoundException e0) {
+//					}
+//				}
 				return super.loadClass(className, resolve);
 			} catch (ClassNotFoundException e) {
 				try {
