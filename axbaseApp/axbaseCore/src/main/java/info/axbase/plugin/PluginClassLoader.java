@@ -25,17 +25,13 @@ public class PluginClassLoader extends DexClassLoader {
 		if (parent instanceof AxAppClassLoader) {
 			parent = parent.getParent();
 		}
-		
-		if (classLoaderType == 0) {
-			return new PluginClassLoader(dexPath, optimizedDirectory,
-					libraryPath, parent);
-		} else {
-			PluginClassLoader cl = new PluginClassLoader(dexPath,
-					optimizedDirectory, libraryPath,
-					ClassLoader.getSystemClassLoader());
-			cl.appClassLoader = parent;
-			return cl;
-		}
+
+
+		PluginClassLoader cl = new PluginClassLoader(dexPath,
+				optimizedDirectory, libraryPath,
+				ClassLoader.getSystemClassLoader());
+		cl.appClassLoader = parent;
+		return cl;
 	}
 
 	private PluginClassLoader(String dexPath, String optimizedDirectory,
@@ -47,15 +43,21 @@ public class PluginClassLoader extends DexClassLoader {
 	protected Class<?> loadClass(String className, boolean resolve)
 			throws ClassNotFoundException {
 		if (classLoaderType == 0) {
+			if (className.startsWith("android.support.")) {
+				try {
+					return super.loadClass(className, resolve);
+				} catch (ClassNotFoundException e0) {
+				}
+			}
+
+			try {
+				return appClassLoader.loadClass(className);
+			} catch (ClassNotFoundException e0) {
+			}
+
 			return super.loadClass(className, resolve);
 		} else {
 			try {
-//				if (className.startsWith("android.support.")) {
-//					try {
-//						return appClassLoader.loadClass(className);
-//					} catch (ClassNotFoundException e0) {
-//					}
-//				}
 				return super.loadClass(className, resolve);
 			} catch (ClassNotFoundException e) {
 				try {
