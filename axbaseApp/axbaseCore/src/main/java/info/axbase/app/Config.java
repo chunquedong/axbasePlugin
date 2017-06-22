@@ -19,7 +19,7 @@ public class Config {
 	/**
 	 * 在更新应用后强制重启
 	 */
-	public boolean forceRestart = false;
+	public int forceRestart = 1;
 	
 	/**
 	 * 只在wifi下更新应用

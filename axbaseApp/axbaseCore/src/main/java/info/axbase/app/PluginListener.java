@@ -53,20 +53,24 @@ public class PluginListener {
 		String title = getApplicationName() + "已更新,应用需要重启";
 		String msg = whatsNew + "\n(Powered by axbase插件系统)";
 
-		AlertDialog.Builder builder = new AlertDialog.Builder(context)
-				.setTitle(title).setMessage(msg).setCancelable(false)
-				.setPositiveButton("确定", new DialogInterface.OnClickListener() {
-					@Override
-					public void onClick(DialogInterface dialog, int which) {
-						restartApp();
-					}
-				});
-		if (PluginClient.config.forceRestart == false) {
-			builder.setNegativeButton("取消", null);
+		if (PluginClient.config.forceRestart != 0){
+			AlertDialog.Builder builder = new AlertDialog.Builder(context)
+					.setTitle(title).setMessage(msg).setCancelable(false)
+					.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+							restartApp();
+						}
+					});
+			if (PluginClient.config.forceRestart == 2) {
+				builder.setNegativeButton("取消", null);
+			}
+			AlertDialog alert = builder.create();
+			alert.getWindow().setType(WindowManager.LayoutParams.TYPE_SYSTEM_ALERT);
+			alert.show();
+		} else {
+			showMessage(title+msg);
 		}
-		AlertDialog alert = builder.create();
-		alert.getWindow().setType(WindowManager.LayoutParams.TYPE_SYSTEM_ALERT);
-		alert.show();
 	}
 
 	public void onLoaded(String id) {
