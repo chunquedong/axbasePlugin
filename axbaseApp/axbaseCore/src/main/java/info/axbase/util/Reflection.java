@@ -5,17 +5,19 @@
  */
 package info.axbase.util;
 
+import android.util.Log;
+
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 public class Reflection {
 	
-	private static Method findDeclaredMethod(Class<?> clazz, String name) {
+	private static Method findDeclaredMethod(Class<?> clazz, String name, Object[] arg) {
 		Method[] methods = clazz.getDeclaredMethods();
         Method method = null;
         for (Method m : methods) {
-        	if (name.equals(m.getName())) {
+        	if (methodFitParam(m, name, arg)) {
         		method = m;
         		break;
         	}
@@ -25,24 +27,54 @@ public class Reflection {
         	if (clazz.equals(Object.class)) {
 				return null;
 			}
-        	return findDeclaredMethod(clazz.getSuperclass(), name);
+        	return findDeclaredMethod(clazz.getSuperclass(), name, arg);
         }
         return method;
 	}
+
+	private static boolean methodFitParam(Method method, String name, Object[] arg) {
+		if (!name.equals(method.getName())) {
+			return false;
+		}
+
+		Class<?>[] paramTypes = method.getParameterTypes();
+		if (paramTypes.length != arg.length) {
+			return false;
+		}
+
+		for (int i=0; i<arg.length; ++i) {
+			Object ar = arg[i];
+			Class<?> paramT = paramTypes[i];
+			if (ar == null) continue;
+
+			//TODO for primitive type
+			if (paramT.isPrimitive()) continue;
+
+			if (!paramT.isInstance(ar)) {
+				return false;
+			}
+		}
+
+		return true;
+	}
 	
-	private static Method findMethod(Class<?> clazz, String name) {
+	private static Method findMethod(Class<?> clazz, String name, Object[] arg) {
 		Method[] methods = clazz.getMethods();
         Method method = null;
         for (Method m : methods) {
-        	if (name.equals(m.getName())) {
+        	if (methodFitParam(m, name, arg)) {
         		method = m;
         		break;
         	}
         }
         
         if (method == null) {
-        	findDeclaredMethod(clazz, name);
+			method = findDeclaredMethod(clazz, name, arg);
         }
+
+        if (method == null) {
+			Log.d("axbase", "not found method " + name + " in " + clazz.getName());
+		}
         return method;
 	}
 	
@@ -92,7 +124,7 @@ public class Reflection {
 	
 	public static Object callMethod(Object obj, String name, Object... arg) {
         try {
-        	Method method = findMethod(obj.getClass(), name);
+        	Method method = findMethod(obj.getClass(), name, arg);
 			return method.invoke(obj, arg);
 		} catch (IllegalArgumentException e) {
 			e.printStackTrace();
