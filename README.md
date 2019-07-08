@@ -40,4 +40,4 @@ PluginClient.getInstance()
 - [原理介绍](http://my.oschina.net/chunquedong/blog/676946)
 - [常见问题](https://github.com/chunquedong/axbasePlugin/wiki)
 
-QQ交流群：604317791，其他问题请提在[Issues页](https://github.com/chunquedong/axbasePlugin/issues)
+其他问题请提在[Issues页](https://github.com/chunquedong/axbasePlugin/issues)
